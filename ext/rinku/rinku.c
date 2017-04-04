@@ -181,8 +181,11 @@ rinku_autolink(
 		active_chars['@'] = AUTOLINK_ACTION_EMAIL;
 
 	if (mode & AUTOLINK_URLS) {
-		active_chars['w'] = AUTOLINK_ACTION_WWW;
-		active_chars['W'] = AUTOLINK_ACTION_WWW;
+		if (!(mode & AUTOLINK_URLS_WITHOUT_WWW)) {
+			active_chars['w'] = AUTOLINK_ACTION_WWW;
+			active_chars['W'] = AUTOLINK_ACTION_WWW;
+		}
+
 		active_chars[':'] = AUTOLINK_ACTION_URL;
 	}
 

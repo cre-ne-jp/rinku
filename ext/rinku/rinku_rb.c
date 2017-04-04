@@ -177,10 +177,12 @@ rb_rinku_autolink(int argc, VALUE *argv, VALUE self)
 			link_mode = AUTOLINK_EMAILS;
 		else if (mode_sym == rb_intern("urls"))
 			link_mode = AUTOLINK_URLS;
+		else if (mode_sym == rb_intern("urls_without_www"))
+			link_mode = AUTOLINK_URLS|AUTOLINK_URLS_WITHOUT_WWW;
 		else
 			rb_raise(rb_eTypeError,
 				"Invalid linking mode "
-				"(possible values are :all, :urls, :email_addresses)");
+				"(possible values are :all, :urls, :urls_without_www, :email_addresses)");
 	}
 
 	if (!NIL_P(rb_html)) {

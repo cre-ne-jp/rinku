@@ -7,6 +7,7 @@
 typedef enum {
 	AUTOLINK_URLS = (1 << 0),
 	AUTOLINK_EMAILS = (1 << 1),
+	AUTOLINK_URLS_WITHOUT_WWW = (1 << 2),
 	AUTOLINK_ALL = AUTOLINK_URLS|AUTOLINK_EMAILS
 } autolink_mode;
 

@@ -383,6 +383,20 @@ This is just a test. <a href="http://www.pokemon.com">http://www.pokemon.com</a>
     assert_linked generate_result(url), url
   end
 
+  def test_without_www
+    url = "www.reddit.com"
+    assert_equal url, Rinku.auto_link(url, :urls_without_www)
+
+    url = "WWW.REDDIT.COM"
+    assert_equal url, Rinku.auto_link(url, :urls_without_www)
+
+    url = "Www.reddit.Com"
+    assert_equal url, Rinku.auto_link(url, :urls_without_www)
+
+    url = "WwW.reddit.CoM"
+    assert_equal url, Rinku.auto_link(url, :urls_without_www)
+  end
+
   def test_non_emails_ending_in_periods
     assert_linked "abc/def@ghi.", "abc/def@ghi."
     assert_linked "abc/def@ghi. ", "abc/def@ghi. "
